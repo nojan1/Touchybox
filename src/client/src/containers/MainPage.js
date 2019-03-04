@@ -12,6 +12,7 @@ import Quote from '../components/quote';
 import Weather from '../components/weather';
 
 import './MainPage.css';
+import NotificationTest from '../components/notificationTest';
 
 class MainPage extends Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -34,6 +35,7 @@ class MainPage extends Component {
         <Quote />
         <Weather />
         <Xkcd />
+        <NotificationTest />
       </SlideDrawer>
     </div>);
   }

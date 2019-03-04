@@ -19,11 +19,11 @@
 
 .slidedrawer_container
 {
+    overflow-x: hidden;
     overflow-y: auto;
     flex-grow: 1;
 }
 
 .slidedrawer_container_inner {
     padding:10px;
-    
 }

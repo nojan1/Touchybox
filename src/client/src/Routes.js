@@ -9,9 +9,9 @@ import NotificationPage from './containers/NotificationPage';
 export default () => (
   <App>
     <Switch>
+      <Route path={routes.NOTIFICATIONS} component={NotificationPage} />
       <Route path={routes.CONFIG} component={ConfigPage} />
       <Route path={routes.HOME} component={MainPage} />
-      <Route path={routes.NOTIFICATIONS} component={NotificationPage} />
     </Switch>
   </App>
 );

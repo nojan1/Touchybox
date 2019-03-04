@@ -42,6 +42,10 @@ module.exports = {
 
         const index = this.notifications.indexOf(notification);
         this.notifications = this.notifications.splice(index, 1);
+    },
+
+    clearNotifications: () => {
+        this.notifications = [];
     }
 }
 

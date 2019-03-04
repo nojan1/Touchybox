@@ -56,6 +56,13 @@ a:hover {
   cursor: pointer;
 }
 
+.back-button {
+  float: left;
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:20px;
+}
+
 .pull-left {
   float:left;
 }
@@ -74,4 +81,8 @@ a:hover {
 
 .flex {
   display:flex;
+}
+
+.page-title {
+  margin-bottom:10px;
 }

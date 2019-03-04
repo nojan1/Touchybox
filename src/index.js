@@ -24,6 +24,11 @@ app.post('/notification', (req, res) => {
     res.status(200).send();
 });
 
+app.delete('/notification/all', (req, res) => {
+    led.clearNotifications();
+    res.status(200).send();
+});
+
 app.delete('/notification/:id', (req, res) => {
     led.clearNotification(req.params.id);
     res.status(200).send();
@@ -40,5 +45,5 @@ app.listen(port, () => {
     led.init();
     buttons.init();
 
-    setTimeout(() => buttons.test(), 3000);
+    //setTimeout(() => buttons.test(), 3000);
 });

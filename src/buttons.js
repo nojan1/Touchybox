@@ -30,12 +30,13 @@ module.exports = {
         gpio.setup(BUTTON_BOTTOM, gpio.DIR_IN, gpio.EDGE_FALLING);
 
         gpio.on('change', (channel, value) => {
-            console.log('channel ' + channel + ' went low');
             switch (channel) {
                 case BUTTON_TOP:
+                    console.log('TOP button was pressed');
                     sendButtonPress(this.webSockets, 'TOP');
                     break;
                 case BUTTON_BOTTOM:
+                    console.log('BOTTOM button was pressed');
                     sendButtonPress(this.webSockets, 'BOTTOM');
                     break;
             }
