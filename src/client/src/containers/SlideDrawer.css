@@ -1,0 +1,29 @@
+.slidedrawer {
+    padding:0;
+    width:100%;
+    height:100%;
+    display:flex;
+}
+
+.slidedrawer_side {
+    width: 30px;
+    flex:0 0 30px;
+    display:flex; 
+    flex-direction: row;
+    align-items: center;
+}
+.slidedrawer_side .fas {
+    display:block;
+    margin:0 auto;
+}
+
+.slidedrawer_container
+{
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.slidedrawer_container_inner {
+    padding:10px;
+    
+}

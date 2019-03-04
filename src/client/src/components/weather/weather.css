@@ -1,0 +1,32 @@
+.weather_outer {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.weather {
+    justify-self: center;
+    
+}
+
+.weather .topic {
+    text-align: center;
+    margin:0 auto;
+}
+
+.weather .lowercontainer {
+    margin-top:10px;
+    display:flex;
+}
+
+.weather .lowercontainer div {
+    flex-grow: 1;
+    text-align:center;
+}
+
+.weather .lowercontainer div img {
+    height:90px;
+}
+
+.weather .compass {
+    margin:0 auto;
+}
