@@ -7,8 +7,8 @@ const gpio =
             setMode: (mode) => {},
         }
 
-const BUTTON_TOP = 5;
-const BUTTON_BOTTOM = 6;
+const BUTTON_TOP = 6;
+const BUTTON_BOTTOM = 5;
 
 const sendButtonPress = (sockets, button) => {
     sockets.forEach(sock => {
@@ -51,7 +51,7 @@ module.exports = {
 
     },
 
-    test: () => {
-        sendButtonPress(this.webSockets, 'TOP');
+    simulateButton: (name) => {
+        sendButtonPress(this.webSockets, name);
     }
 }

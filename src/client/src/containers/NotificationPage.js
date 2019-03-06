@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../constants/routes';
 import { connect } from 'react-redux'
+import { clearNotifications } from '../actions/notifications';
 
 class NotificationPage extends Component {
   renderNotifications(notifications){
@@ -21,13 +22,13 @@ class NotificationPage extends Component {
 
     return (<div>
         <Link to={routes.HOME} className="back-button">
-            <i className="fa fa-arrow-left" />
+            <i className="fa fa-arrow-left fa-2x" />
           </Link>
 
         <h1 className="pull-left page-title">Notifications</h1>
 
-        <a className="config-button">
-          <i className="fas fa-eraser"></i>
+        <a className="config-button" onClick={this.props.clearNotifications.bind(this)}>
+          <i className="fas fa-eraser fa-2x"></i>
         </a>
 
         <div className="clearfix"></div>
@@ -44,5 +45,6 @@ function mapStateToProps(state = {notifications: []}) {
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  { clearNotifications }
 )(NotificationPage);

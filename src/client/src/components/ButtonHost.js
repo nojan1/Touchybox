@@ -7,20 +7,22 @@ import routes from '../constants/routes';
 import { buttonWasPressed } from '../actions/button';
 
 class ButtonHost extends Component {
-    constructor() {
-        super();
+    componentDidMount() {
+        const { push, buttonWasPressed } = this.props;
 
         this.socket = new WebSocket(config.WS_API + "/buttons");
         this.socket.addEventListener('message', event => {
             const payload = JSON.parse(event.data);
 
-            if(payload.buttonPressed){
+            if (payload.buttonPressed) {
                 console.log(payload.buttonPressed + " was pressed");
-                
-                if(payload.buttonPressed === 'TOP')
-                    this.props.push(routes.NOTIFICATIONS);
-                else
-                    this.props.buttonWasPressed(payload.buttonPressed);
+
+                setTimeout(() => {
+                    if (payload.buttonPressed === 'TOP')
+                        push(routes.NOTIFICATIONS);
+                    else
+                        buttonWasPressed(payload.buttonPressed);
+                });
             }
         });
     }
@@ -28,11 +30,11 @@ class ButtonHost extends Component {
     render = () => null;
 }
 
-function mapStateToProps(state = {buttons: null}) {
+function mapStateToProps(state = { buttons: null }) {
     return {
-      router: state.router
+        router: state.router
     };
-  }
+}
 
 export default connect(
     mapStateToProps,

@@ -27,7 +27,7 @@ class MainPage extends Component {
   render() {
     return (<div className="full-height">
       <Link to={routes.CONFIG} className="config-button">
-        <i className="fas fa-cog"></i>
+        <i className="fas fa-cog fa-2x"></i>
       </Link>
  
       <SlideDrawer>

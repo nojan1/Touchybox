@@ -39,6 +39,13 @@ app.ws('/buttons', (ws, reg) => {
     ws.on('close', () => buttons.unregisterWebsocket(ws));
 });
 
+//TEST
+app.post('/button/simulate', (req, res) => {
+    buttons.simulateButton(req.body.name);
+    res.status(200).send();
+});
+//
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`);
 

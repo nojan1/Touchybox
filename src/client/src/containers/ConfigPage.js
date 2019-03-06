@@ -6,7 +6,7 @@ export default class ConfigPage extends Component {
   render() {
     return (<div>
         <Link to={routes.HOME} className="back-button">
-            <i className="fa fa-arrow-left" />
+            <i className="fa fa-arrow-left fa-2x" />
           </Link>
 
         <h1 className="pull-left">Config</h1>

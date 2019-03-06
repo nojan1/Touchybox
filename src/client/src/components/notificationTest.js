@@ -15,6 +15,12 @@ class NotificationTest extends Component {
         this.props.clearNotifications();
     }
 
+    componentDidUpdate(prevProps) {
+        if(!prevProps.buttons.BOTTOM || prevProps.buttons.BOTTOM < this.props.buttons.BOTTOM){
+            alert("Bottom was pressed");
+        }
+    }
+
     render() {
         const notifications = Object.values(this.props.notifications);
         return (
@@ -41,7 +47,8 @@ class NotificationTest extends Component {
 
 function mapStateToProps(state) {
     return {
-        notifications: state.notifications
+        notifications: state.notifications,
+        buttons: state.buttons
     };
 }
 
