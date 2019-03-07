@@ -1,0 +1,17 @@
+[
+    {
+        "key": "coffee-cup",
+        "caffeine": 90,
+        "amount": 200
+    },
+    {
+        "key": "soda-can",
+        "caffeine": 20,
+        "amount": 330
+    },
+    {
+        "key": "water-bottle",
+        "caffeine": 0,
+        "amount": 600
+    }
+]

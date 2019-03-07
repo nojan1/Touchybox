@@ -6,6 +6,7 @@ import routes from '../constants/routes';
 import { loadQuote } from '../actions/quote';
 import { loadXkcd } from '../actions/xkcd';
 import { loadWeather } from '../actions/weather';
+import { loadDrinks } from '../actions/drinks';
 
 import ButtonHost from '../components/ButtonHost';
 import MainPage from './MainPage';
@@ -22,6 +23,8 @@ class Root extends Component{
     callAndSetupRefresh(this.props.loadQuote, 3600 * 2);
     callAndSetupRefresh(this.props.loadXkcd, 3600 * 2);
     callAndSetupRefresh(this.props.loadWeather, 3600 * 2);
+
+    this.props.loadDrinks();
   }
 
   render() {
@@ -39,5 +42,5 @@ class Root extends Component{
 
 export default connect(
   null,
-  { loadQuote, loadXkcd, loadWeather }
+  { loadQuote, loadXkcd, loadWeather, loadDrinks }
 )(Root)
