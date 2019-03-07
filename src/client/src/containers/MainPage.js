@@ -16,22 +16,13 @@ import Coffee from '../components/coffee';
 import './MainPage.css';
 
 class MainPage extends Component {
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if(!this.props.buttons.pressedButton)
-      return;
-
-    if (prevProps.buttons.pressedButton !== this.buttons.pressedButton) {
-        
-    }
-  }
-
   render() {
     return (<div className="full-height">
       <Link to={routes.CONFIG} className="config-button">
         <i className="fas fa-cog fa-lg"></i>
       </Link>
  
-      <SlideDrawer>
+      <SlideDrawer initialSlide={this.props.match.params.slide}>
         <Home />
         <Quote />
         <Weather />

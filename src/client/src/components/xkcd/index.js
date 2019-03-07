@@ -5,6 +5,12 @@ import { connect } from 'react-redux';
 import './xkcd.css';
 
 class Xkcd extends Component {
+  constructor(props){
+    super(props);
+
+    Xkcd.prototype.name = "Xkcd";
+  }
+
   render() {
     const { xkcd } = this.props;
 

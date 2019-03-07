@@ -6,11 +6,27 @@ export default class SlideDrawer extends Component {
     constructor(props) {
         super(props);
 
+        this.currentComponentIndex = this.findInitialComponentIndex(props.initialSlide);
         this.state = {
-            currentComponent: this.props.children[0]
+            currentComponent: this.props.children[this.currentComponentIndex]
         };
+    }
 
-        this.currentComponentIndex = 0;
+    findInitialComponentIndex(initialSlide) {
+        if (!initialSlide)
+            return 0;
+
+        for (let i = 0; i < this.props.children.length; i++) {
+            const child = this.props.children[i];
+            const name = child.type.WrappedComponent 
+                ? child.type.WrappedComponent.name
+                : child.type.name
+
+            if(name === initialSlide)
+                return i;
+        }
+
+        return 0;
     }
 
     switch = (direction) => {

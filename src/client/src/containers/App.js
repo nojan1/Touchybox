@@ -30,7 +30,7 @@ class Root extends Component{
         <Switch>
           <Route path={routes.NOTIFICATIONS} component={NotificationPage} />
           <Route path={routes.CONFIG} component={ConfigPage} />
-          <Route path={routes.HOME} component={MainPage} />
+          <Route path={routes.HOME + ':slide?'} component={MainPage} />
         </Switch>
       </div>
     );
