@@ -2,13 +2,18 @@ const gpio =
     process.arch === 'arm' && process.platform === 'linux'
         ? require('rpi-gpio')
         : {
+            onChangeFunc: undefined,
             setup: (pin, dir, edge) => { },
-            on: (str, func) => { },
-            setMode: (mode) => {},
+            on: (str, func) => { 
+                if(str === 'change'){
+                    gpio.onChangeFunc = func;
+                } 
+            },
+            setMode: (mode) => { },
         }
 
-const BUTTON_TOP = 6;
-const BUTTON_BOTTOM = 5;
+const DEBOUNCE = 100;
+const BUTTONS = { 6: "TOP", 5: "BOTTOM" }
 
 const sendButtonPress = (sockets, button) => {
     sockets.forEach(sock => {
@@ -23,22 +28,19 @@ const sendButtonPress = (sockets, button) => {
 module.exports = {
     init: () => {
         this.webSockets = [];
+        this.lastPressed = Object.keys(BUTTONS).reduce((o, key) => ({ ...o, [key]: 0 }), {})
 
         gpio.setMode(gpio.MODE_BCM);
 
-        gpio.setup(BUTTON_TOP, gpio.DIR_IN, gpio.EDGE_FALLING);
-        gpio.setup(BUTTON_BOTTOM, gpio.DIR_IN, gpio.EDGE_FALLING);
+        Object.keys(BUTTONS).forEach(c =>
+            gpio.setup(c, gpio.DIR_IN, gpio.EDGE_FALLING))
 
-        gpio.on('change', (channel, value) => {
-            switch (channel) {
-                case BUTTON_TOP:
-                    console.log('TOP button was pressed');
-                    sendButtonPress(this.webSockets, 'TOP');
-                    break;
-                case BUTTON_BOTTOM:
-                    console.log('BOTTOM button was pressed');
-                    sendButtonPress(this.webSockets, 'BOTTOM');
-                    break;
+        gpio.on('change', (channel, _) => {
+            if (BUTTONS[channel] && Date.now() - this.lastPressed[channel] > DEBOUNCE) {
+                console.log(BUTTONS[channel] + ' button was pressed');
+
+                this.lastPressed[channel] = Date.now();
+                sendButtonPress(this.webSockets, BUTTONS[channel]);
             }
         });
     },
@@ -52,6 +54,14 @@ module.exports = {
     },
 
     simulateButton: (name) => {
-        sendButtonPress(this.webSockets, name);
+        if(gpio.onChangeFunc){
+            Object.keys(BUTTONS).forEach(k => {
+                if(BUTTONS[k] === name){
+                    gpio.onChangeFunc(k, true);
+                }
+            });
+        }else{
+            sendButtonPress(this.webSockets, name);
+        }
     }
 }
