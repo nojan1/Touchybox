@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Pot from './pot';
 
+import './coffee.css';
+
 class Coffee extends Component {
     constructor(props){
         super(props);
@@ -10,7 +12,7 @@ class Coffee extends Component {
 
     render() {
         return (
-            <div className="full-height flex">
+            <div className="full-height potcontainer">
                 <Pot fill={this.props.pots.left} />
                 <Pot fill={this.props.pots.right} />
             </div>

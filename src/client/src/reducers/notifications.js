@@ -6,7 +6,7 @@ export default function notifications(state = {}, action) {
         case ADDED_NOTIFICATION:
             return { ...state, [action.payload.id]: action.payload };
         case REMOVED_NOTIFICATION:
-            return _.omit(state, action.payload);
+            return _.omit(state, action.payload.id);
         case CLEARED_NOTIFICATIONS:
             return {};
         default:

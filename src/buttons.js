@@ -12,7 +12,7 @@ const gpio =
             setMode: (mode) => { },
         }
 
-const DEBOUNCE = 100;
+const DEBOUNCE = 200;
 const BUTTONS = { 6: "TOP", 5: "BOTTOM" }
 
 const sendButtonPress = (sockets, button) => {

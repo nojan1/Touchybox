@@ -24,6 +24,7 @@ module.exports = {
         process.on('SIGINT', function () {
             ws281x.reset();
             process.nextTick(function () { process.exit(0); });
+            clearInterval(this.handle);
         });
     
         this.notifications = [];
@@ -40,8 +41,8 @@ module.exports = {
         if(notification.length === 0)
             return;
 
-        const index = this.notifications.indexOf(notification);
-        this.notifications = this.notifications.splice(index, 1);
+        const index = this.notifications.indexOf(notification[0]);
+        this.notifications.splice(index, 1);
     },
 
     clearNotifications: () => {
