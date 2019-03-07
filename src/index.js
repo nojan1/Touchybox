@@ -51,6 +51,4 @@ app.listen(port, () => {
 
     led.init();
     buttons.init();
-
-    //setTimeout(() => buttons.test(), 3000);
 });

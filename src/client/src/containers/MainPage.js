@@ -12,6 +12,7 @@ import Quote from '../components/quote';
 import Weather from '../components/weather';
 import NotificationTest from '../components/notificationTest';
 import Coffee from '../components/coffee';
+import Drinkamount from '../components/drinkamount';
 
 import './MainPage.css';
 
@@ -29,6 +30,7 @@ class MainPage extends Component {
         <Xkcd />
         <NotificationTest />
         <Coffee />
+        <Drinkamount />
       </SlideDrawer>
     </div>);
   }
