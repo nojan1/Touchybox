@@ -16,7 +16,7 @@ class NotificationTest extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(!prevProps.buttons.BOTTOM || prevProps.buttons.BOTTOM < this.props.buttons.BOTTOM){
+        if(prevProps.buttons.BOTTOM < this.props.buttons.BOTTOM){
             alert("Bottom was pressed");
         }
     }
