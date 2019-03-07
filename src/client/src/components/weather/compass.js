@@ -18,8 +18,8 @@ export default class Compass extends Component {
 
         return (
             <div style={{height: height}}>
-                <img src="../resources/compass-background.png" style={{height: '100%'}}/>
-                <img src="../resources/compass-needle.png" style={needleStyle}/>
+                <img src="../resources/compass-background.png" alt="compass-base" style={{height: '100%'}}/>
+                <img src="../resources/compass-needle.png" alt="compass-needle" style={needleStyle}/>
             </div>
         );
     }
